@@ -49,6 +49,7 @@ form > fieldset > label, fieldset > input, select, textarea {
 fieldset > input, select, textarea {
     min-height: 2.5vh;
     margin: 0 auto 1vh auto;
+    border: 1px solid black;
 }
 
 fieldset > fieldset {
