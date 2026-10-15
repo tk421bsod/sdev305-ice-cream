@@ -17,6 +17,10 @@
     padding-bottom: 5vh;
 }
 
+#err{
+    color: red;
+}
+
 #main-content {
     max-width: 700px;
     height: 90vh;
