@@ -6,7 +6,7 @@ function formSubmit(event) {
         emailIsDefinitelyInvalid = !email.includes("@");
     }
     let flavor = document.getElementById('flavor').value;
-    let selectedCone = document.querySelector('cones > input:checked');
+    let selectedCone = document.querySelector('#cones > input:checked');
     let errorElement = document.getElementById('err');
     let validationConditions = [name, email, !emailIsDefinitelyInvalid, flavor, selectedCone];
     let errorMessages = ["Please enter a name.", "Please enter an email address.", "Please enter a valid email address.", "Please select a flavor.", "Please select a cone type."];

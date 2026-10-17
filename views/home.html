@@ -16,16 +16,16 @@
             <fieldset>
                 <legend>Personal Information</legend>
                 <label for="name">Name:</label>
-                <input type="text" id="name">
+                <input type="text" id="name" name="name">
                 <label for="email">Email:</label>
-                <input type="text" id="email">
+                <input type="text" id="email" name="email">
             </fieldset>
 
             <fieldset>
                 <legend>Order Details</legend>
                 <label for="flavor">Choose your flavor:</label>
                 <div>
-                    <select id="flavor">
+                    <select id="flavor" name="flavor">
                         <option>Vanilla</option>
                         <option>Chocolate</option>
                         <option>Strawberry</option>
@@ -37,7 +37,7 @@
                     <div id="cones">
                         <input type="radio" id="waffle" name="cone" value="waffle">
                         <label for="cone"> Waffle Cone </label>
-                        <input type="radio" id="sugar" name="cone" value="sugar">
+                        <input type="radio" id="sugar" name="cone" value="sugar" checked>
                         <label for="cone">Sugar Cone</label>
                         <input type="radio" id="cup" name="cone" value="cup">
                         <label for="cone">Cup</label>
@@ -57,7 +57,7 @@
                     </div>
                 </fieldset>
                 <label for="comments">Additional Comments:</label>
-                <textarea id="comments" rows="8"></textarea>
+                <textarea id="comments" name="comments" rows="8"></textarea>
             </fieldset>
 
             <button type="submit" id="order-button">Submit Order</button>
