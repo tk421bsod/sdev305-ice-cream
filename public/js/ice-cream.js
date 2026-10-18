@@ -5,17 +5,16 @@ function formSubmit(event) {
     if (email){
         emailIsDefinitelyInvalid = !email.includes("@");
     }
-    let flavor = document.getElementById('flavor').value;
+    let flavor = document.getElementById('flavor').value != "Select a flavor...";
     let selectedCone = document.querySelector('#cones > input:checked');
     let errorElement = document.getElementById('err');
-    let validationConditions = [name, email, !emailIsDefinitelyInvalid, flavor, selectedCone];
-    let errorMessages = ["Please enter a name.", "Please enter an email address.", "Please enter a valid email address.", "Please select a flavor.", "Please select a cone type."];
+    let validationConditions = [name, flavor, selectedCone, email, !emailIsDefinitelyInvalid];
+    let errorMessages = ["Please enter a name.", "Please select a flavor.", "Please select a cone type.", "Please enter an email address.", "Please enter a valid email address."];
+    errorElement.innerHTML = "";
     for (let i = 0; i < validationConditions.length; i++) {
-        console.log(validationConditions[i]);
-        if (!validationConditions[i]) {
+        if (!validationConditions[i] && !errorElement.innerHTML.includes("email")) {
             event.preventDefault();
-            errorElement.innerHTML = errorMessages[i];
-            return;
+            errorElement.innerHTML += errorMessages[i] + "<br>";
         }
     }
 }
