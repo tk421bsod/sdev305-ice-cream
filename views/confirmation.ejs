@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <title>Thank You</title>
+</head>
+<body>
+    <div id="main-content">
+        <h1 id="header">Thank you for your order!</h1>
+        <p>Your order has been placed.</p>
+        <br>
+        <div class="section">
+            <h3 class="section-header">Personal Information</h3>
+            <p>Name: <%= order.name %></p>
+            <p>Email: <%= order.email %></p>
+        </div>
+        <div class="section">
+            <h3 class="section-header">Order Details</h3>
+            <p>Flavor: <%= order.flavor %></p>
+            <p>Cone Type: <%= order.cone %></p>
+            <p>Toppings: <%= order.toppings %></p>
+        </div>
+        <div class="section">
+            <h3 class="section-header">Additional Comments:</h3>
+            <blockquote><%= order.comments %></blockquote>
+        </div>
+        <div class="section">
+            <button id="print-button" class="secondary-button" onclick="window.print()">Print Order</button>
+            <button id="order-again-button" class="primary-button" onclick="window.location.href='/'">Place Another Order</button>
+        </div>
+    </div>
+</body>
+</html>

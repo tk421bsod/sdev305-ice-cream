@@ -76,8 +76,8 @@ form > fieldset {
     margin: 1vh auto 2vh auto;
 }
 
-button {
-    width: 70%;
+button, .button {
+    width: 40%;
     height: 4vh;
     font-size: 1.2em;
 }
@@ -90,4 +90,10 @@ button {
 .secondary-button {
     background-color: var(--secondary-bg);
     color: var(--secondary-fg);
+}
+
+.pair {
+    display: grid;
+    grid-template-columns: 1fr;
+
 }

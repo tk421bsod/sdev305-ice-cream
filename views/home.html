@@ -12,7 +12,7 @@
     <div id="main-content">
         <h1 id="header">Ice Cream Order Form</h1>
         <span id="err"></span>
-        <form id="main-form">
+        <form id="main-form" method="post" action="/submit">
             <fieldset>
                 <legend>Personal Information</legend>
                 <label for="name">Name:</label>
@@ -36,22 +36,22 @@
                 <fieldset>
                     <legend>Choose your cone:</legend>
                     <div id="cones">
-                        <input type="radio" id="waffle" name="cone" value="waffle">
+                        <input type="radio" id="waffle" name="cone" value="Waffle">
                         <label for="cone"> Waffle Cone </label>
-                        <input type="radio" id="sugar" name="cone" value="sugar">
+                        <input type="radio" id="sugar" name="cone" value="Sugar">
                         <label for="cone">Sugar Cone</label>
-                        <input type="radio" id="cup" name="cone" value="cup">
+                        <input type="radio" id="cup" name="cone" value="Cup">
                         <label for="cone">Cup</label>
                     </div>
                 </fieldset>
                 <fieldset>
                     <legend>Toppings:</legend>
                     <div>
-                        <input type="checkbox" id="sprinkles" name="toppings" value="sprinkles">
+                        <input type="checkbox" id="sprinkles" name="toppings" value="Sprinkles">
                         <label for="sprinkles">Sprinkles</label>
-                        <input type="checkbox" id="nuts" name="toppings" value="nuts">
+                        <input type="checkbox" id="nuts" name="toppings" value="Nuts">
                         <label for="nuts">Nuts</label>
-                        <input type="checkbox" id="cherry" name="toppings" value="cherry">
+                        <input type="checkbox" id="cherry" name="toppings" value="Cherry">
                         <label for="cherry">Cherry</label>
                         <input type="checkbox" id="whipped-cream" name="toppings" value="whipped-cream">
                         <label for="whipped-cream">Whipped Cream</label>
@@ -61,7 +61,7 @@
                 <textarea id="comments" name="comments" rows="8"></textarea>
             </fieldset>
 
-            <button type="submit" id="order-button">Submit Order</button>
+            <button type="submit" id="order-button" class="primary-button">Submit Order</button>
         </form>
     </div>
 </body>
