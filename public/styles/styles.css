@@ -1,3 +1,13 @@
+:root {
+    --body-bg: #a0ceed;
+    --container-bg: white;
+    --primary-bg: #2C882B;
+    --primary-fg: white;
+    --secondary-bg: white;
+    --secondary-fg: black;
+    --success-fg: #2C882B;
+}
+
 *{
     margin: auto;
     text-align: center;
@@ -26,13 +36,13 @@
     height: 93vh;
     margin-top: 4vh;
     margin-bottom: 4vh;
-    background-color: white;
+    background-color: var(--container-bg);
     border-radius: 10px;
     box-shadow: 1px 1px 20px 1px #a39e9e;
 }
 
 body {
-    background-color: #a0ceed;
+    background-color: var(--body-bg);
 }
 
 fieldset * {
@@ -67,9 +77,17 @@ form > fieldset {
 }
 
 button {
-    background-color: #2C882B;
-    color: white;
     width: 70%;
     height: 4vh;
     font-size: 1.2em;
+}
+
+.primary-button {
+    background-color: var(--primary-bg);
+    color: var(--primary-fg);
+}
+
+.secondary-button {
+    background-color: var(--secondary-bg);
+    color: var(--secondary-fg);
 }
