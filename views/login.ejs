@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <title>Login</title>
+</head>
+<body>
+    <div id="main-content">
+        <h1 id="header">Admin Login</h1>
+        <% if (error) { %>
+            <p class="login-error"><%= error %></p>
+        <% } %>
+        <form action="/login" method="post">
+            <fieldset>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </fieldset>
+
+            <button type="submit" class="primary-button">Log In</button>
+        </form>
+    </div>
+</body>
+</html>
