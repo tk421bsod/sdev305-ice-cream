@@ -52,15 +52,12 @@ app.get('/logout', (req, res) => {
 app.post('/submit', async(req, res) => {
     let order = req.body;
 
-    console.log(order); 
     order.toppings = Array.isArray(order.toppings) ? order.toppings.join(", ") : "";
     const sql = `INSERT INTO orders(customer, email, flavor, cone, toppings, comment) VALUES (?, ?, ?, ?, ?, ?)`;
     const params = [order.name, order.email, order.flavor, order.cone, order.toppings, order.comments];
     const [result] = await pool.execute(sql, params);
 
     order.id = result.insertId;
-    console.log('Order saved with ID: ', order.id);
-    console.log(order);
     res.render('confirmation', { order });
 });
 app.get('/admin', requireLogin, async (req, res) => {
@@ -68,12 +65,7 @@ app.get('/admin', requireLogin, async (req, res) => {
         const [orders] = await pool.query(`SELECT * FROM orders ORDER BY timestamp DESC`);
         res.render('admin', { orders });
     } catch (err) {
-        console.log("Database error");
-        console.log(err);
+        res.status(500).send("<h1>Sorry, your order couldn't be placed.</h1><p>Please try again later.</p>")
     }
 }); 
-app.get('/session-test', (req, res) => {
-    req.session.views = (req.session.views || 0) + 1;
-    res.send(`Visits: ${req.session.views}<br>Logged in: ${req.session.loggedIn === true}`);
-})
 app.listen(port, () => {console.log("Server is running")});
