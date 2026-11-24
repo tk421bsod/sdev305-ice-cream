@@ -1,4 +1,5 @@
 import express from 'express';
+import session from 'express-session';
 import mysql2 from 'mysql2';
 import dotenv from 'dotenv';
 
@@ -18,8 +19,36 @@ const pool = mysql2.createPool({
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true}));
+app.use(session({secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false, cookie: { maxAge: 1000*60*60}}));
 app.use(express.static('public'));
+
+function requireLogin(req, res, next) {
+    if (req.session.loggedIn) {
+        next();
+    } else {
+        res.redirect('/login');
+    }
+}
+
 app.get('/', (req, res) => {res.sendFile(`${import.meta.dirname}/views/home.html`)});
+app.get('/login', (req, res) => {
+    let error = "";
+    res.render('login', { error })
+})
+app.post('/login', (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    if (username === process.env.ADMIN_USER && password === process.env.ADMIN_PASSWORD) {
+        req.session.loggedIn = true;
+        res.redirect('/admin');
+    } else {
+        res.render('login', { error : 'Invalid username or password.'});
+    }
+})
+app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {res.redirect('/login');});
+})
 app.post('/submit', async(req, res) => {
     let order = req.body;
 
@@ -34,7 +63,7 @@ app.post('/submit', async(req, res) => {
     console.log(order);
     res.render('confirmation', { order });
 });
-app.get('/admin', async (req, res) => {
+app.get('/admin', requireLogin, async (req, res) => {
     try {
         const [orders] = await pool.query(`SELECT * FROM orders ORDER BY timestamp DESC`);
         res.render('admin', { orders });
@@ -43,4 +72,8 @@ app.get('/admin', async (req, res) => {
         console.log(err);
     }
 }); 
+app.get('/session-test', (req, res) => {
+    req.session.views = (req.session.views || 0) + 1;
+    res.send(`Visits: ${req.session.views}<br>Logged in: ${req.session.loggedIn === true}`);
+})
 app.listen(port, () => {console.log("Server is running")});
